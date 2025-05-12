@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Place</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="market.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="#" class="brand"> PFU MarketPlace</a>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Search products...">
+            <button class="search-button">Search</button>
+        </div>
+        <div class="nav-icons">
+            <div class="nav-icon cart-icon">
+                🛒
+                <span class="cart-count">0</span>
+            </div>
+            <div class="nav-icon account-icon"><i class="fas fa-user" style="color: rgb(166, 166, 166);"></i></div>
+            <div class="nav-icon home-icon"><a href="index.html"><i class="fas fa-home" style="color: rgb(166, 166, 166);"></i>
+            </a></div>
+        </div>
+    </nav>
+    <br>
+    <!-- Advertisement Section -->
+    <section class="ad-section">
+        <div class="ad-container">
+            <img src="images/ad (1).jpg" alt="Advertisement 1" class="ad-image">
+            <img src="images/ad (2).jpg" alt="Advertisement 2" class="ad-image">
+            <img src="images/ad (3).jpg" alt="Advertisement 3" class="ad-image">
+            <img src="images/ad (4).jpg" alt="Advertisement 4" class="ad-image">
+            <img src="images/ad (1).jpg" alt="Advertisement 5" class="ad-image">
+        </div>
+    </section>
+    
+    <!-- Products Section -->
+    <section class="products-section">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="products-grid" id="products-container">
+            <!-- Products will be dynamically added here -->
+        </div>
+    </section>
+    
+    <!-- Product Detail Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="product-detail">
+                <div class="product-images">
+                    <img id="mainProductImage" src="" alt="Product Image" class="main-image">
+                    <div class="thumbnail-container">
+                        <img src="" alt="Thumbnail 1" class="thumbnail" onclick="changeMainImage(this)">
+                        <img src="" alt="Thumbnail 2" class="thumbnail" onclick="changeMainImage(this)">
+                        <img src="" alt="Thumbnail 3" class="thumbnail" onclick="changeMainImage(this)">
+                    </div>
+                </div>
+                <div class="product-details">
+                    <h2 class="detail-name" id="detailName"></h2>
+                    <div class="detail-price" id="detailPrice"></div>
+                    <p class="detail-description" id="detailDescription"></p>
+                    <button class="add-to-cart" id="modalAddToCart">Add to Cart</button>
+                    <div class="long-description" id="longDescription"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="auth-form" id="loginForm">
+                <h2 class="form-title">Login</h2>
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password">
+                </div>
+                <button class="submit-button" onclick="login()">Login</button>
+                <p class="switch-form">Don't have an account? <span class="switch-link" onclick="showRegisterForm()">Register here</span></p>
+            </div>
+            
+            <div class="auth-form" id="registerForm" style="display: none;">
+                <h2 class="form-title">Register</h2>
+                <div class="form-group">
+                    <label for="registerName">Full Name</label>
+                    <input type="text" id="registerName" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" placeholder="Create a password">
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Confirm Password</label>
+                    <input type="password" id="registerConfirmPassword" placeholder="Confirm your password">
+                </div>
+                <button class="submit-button" onclick="register()">Register</button>
+                <p class="switch-form">Already have an account? <span class="switch-link" onclick="showLoginForm()">Login here</span></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Your Cart</h2>
+            <div class="cart-items" id="cartItemsContainer">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-summary">
+                <div class="total-amount">Total: UGX <span id="cartTotal">0.00</span></div>
+                <button class="checkout-button">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="market.js"></script>
+</body>
+</html>
