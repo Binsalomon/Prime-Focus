@@ -126,7 +126,15 @@ AOS.init({
 
 
 
+//chatbox
+ document.getElementById('whatsapp-button').addEventListener('click', function () {
+        const phone = '256785230670'; 
+        const message = encodeURIComponent('');
+        const url = `https://wa.me/${phone}?text=${message}`;
 
+        window.open(url, '_blank');
+    });
+     
 
 
 //year updt

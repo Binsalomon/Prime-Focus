@@ -153,17 +153,13 @@ setInterval(nextSlide, 3000);
         setInterval(nextTestimonial, 5000);
 
 
-
-      // chat box
-    document.getElementById('whatsapp-button').addEventListener('click', function () {
-        const phone = '256 785 230670'; 
-        const message = encodeURIComponent('Hello Kasubi Vendors, I need some help!');
+ document.getElementById('whatsapp-button').addEventListener('click', function () {
+        const phone = '256785230670'; 
+        const message = encodeURIComponent('');
         const url = `https://wa.me/${phone}?text=${message}`;
 
-        // Optional: you can show a loader or animation here before opening
         window.open(url, '_blank');
     });
-
      
 
     //year updt
