@@ -95,7 +95,7 @@ body {
 .nav-links a {
     color: var(--dark-color);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: bold;
     transition: color 0.3s;
     position: relative;
     font-size: o.95rem;

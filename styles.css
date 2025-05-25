@@ -69,10 +69,10 @@
 .nav-links a {
     color: var(--dark-color);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     transition: color 0.3s;
     position: relative;
-    font-size: o.95rem;
+    font-size: 0.95rem;
 }
 
 .nav-links a:hover {
@@ -311,7 +311,7 @@
         /* Stats Section */
         .stats {
             padding: 3rem 5%;
-            background: linear-gradient(135deg, var(--primary-light), var(--dark));
+            background: linear-gradient(135deg, var(--glass-bg), var(--light));
             color: white;
             text-align: center;
         }
@@ -697,6 +697,27 @@
     font-size: 0.9rem;
     margin-top: 3px;
 }
+
+.terms {
+    display: flex; 
+    justify-content: center; 
+    gap: 40px; 
+    text-align: center;
+}
+
+.terms a {
+    font-size: 13px;
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: bold;
+}
+
+.terms a:hover{
+    color: var(--secondary-light);
+    border-bottom: 2px solid var(--secondary-light);
+}
+
+
 
 .footer-bottom {
     text-align: center;
