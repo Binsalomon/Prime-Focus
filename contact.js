@@ -43,6 +43,8 @@
 
 
 
+
+        
         //links alight 
         document.addEventListener('DOMContentLoaded', () => {
     setupServiceCards();
@@ -64,7 +66,37 @@
 
 
 
-        // Form submission
+
+     //chatbox
+ document.getElementById('whatsapp-button').addEventListener('click', function () {
+        const phone = '256785230670'; 
+        const message = encodeURIComponent('');
+        const url = `https://wa.me/${phone}?text=${message}`;
+
+        window.open(url, '_blank');
+    });
+     
+
+//year updt
+
+document.addEventListener('DOMContentLoaded', function () {
+    const yearSpan = document.getElementById('year');
+    const currentYear = new Date().getFullYear();
+    yearSpan.textContent = currentYear;
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+          // Form submission
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
@@ -82,25 +114,3 @@
                 contactForm.reset();
             });
         }
-
-
-
-
-
-//chatbox
- document.getElementById('whatsapp-button').addEventListener('click', function () {
-        const phone = '256785230670'; 
-        const message = encodeURIComponent('');
-        const url = `https://wa.me/${phone}?text=${message}`;
-
-        window.open(url, '_blank');
-    });
-     
-
-//year updt
-
-document.addEventListener('DOMContentLoaded', function () {
-    const yearSpan = document.getElementById('year');
-    const currentYear = new Date().getFullYear();
-    yearSpan.textContent = currentYear;
-  });
