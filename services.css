@@ -46,11 +46,11 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 70%;
     z-index: -1;
-    background-image: radial-gradient(var(--gray-color) 1px, transparent 1px);
-    background-size: 20px 20px;
-    opacity: 0.15;
+    background-image: radial-gradient(var(--secondary-color) 4px, transparent 4px);
+    background-size: 50px 50px;
+    opacity: 0.18;
 }
 
 
@@ -161,26 +161,14 @@ body {
 
 /* Header */
 header {
-    background: linear-gradient(135deg, var(--light-color), var(--lig-color), var(--light-color));
-    color: var(--light-color);
-    padding: 6rem 0 4rem;
+    background: linear-gradient(135deg, var(--lig-color), var(--light-color), var(--light-color));
+    color: var(--gray-color);
+    padding: 8rem 0 5rem;
     text-align: center;
     position: relative;
     overflow: hidden;
 }
 
-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Q50,80 0,100 Z" fill="%23f9fafb" opacity="0.05"/></svg>');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: bottom;
-}
 
 .container {
     max-width: 1200px;
@@ -194,7 +182,7 @@ h1 {
     margin-bottom: 1rem;
     position: relative;
     display: inline-block;
-    color: #e79301;
+    color: #3856da;
 }
 
 h1::after {
@@ -210,11 +198,12 @@ h1::after {
 }
 
 .subtitle {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     opacity: 0.9;
     max-width: 800px;
     margin: 0 auto 2rem;
-    color: rgba(97, 97, 97, 0.9);
+    color: rgba(58, 58, 58, 0.9);
+    font-weight: bold;
 }
 
 

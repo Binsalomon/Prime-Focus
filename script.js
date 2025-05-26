@@ -162,6 +162,81 @@ setInterval(nextSlide, 3000);
     });
      
 
+
+
+     // Get the modal elements
+        const termsModal = document.getElementById('termsModal');
+        const privacyModal = document.getElementById('privacyModal');
+        const disclaimerModal = document.getElementById('disclaimerModal');
+        const intellectualModal = document.getElementById('intellectualModal');
+        
+        // Get the link elements
+        const termsLink = document.getElementById('termsLink');
+        const privacyLink = document.getElementById('privacyLink');
+        const disclaimerLink = document.getElementById('disclaimerLink');
+        const intellectualLink = document.getElementById('intellectualLink');
+
+        
+        // Get all close buttons
+        const closeButtons = document.querySelectorAll('.close-btn');
+        
+        // Function to show modal with animation
+        function showModal(modal) {
+            modal.style.display = 'block';
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
+        }
+        
+        // Function to hide modal with animation
+        function hideModal(modal) {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+        
+        // When the user clicks on Terms of Service, open the modal
+        termsLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            showModal(termsModal);
+        });
+        
+        // When the user clicks on Privacy Policy, open the modal
+        privacyLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            showModal(privacyModal);
+        });
+        
+        // When the user clicks on Disclaimer, open the modal
+        disclaimerLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            showModal(disclaimerModal);
+        });
+
+        // When the user clicks on intellectual, open the modal
+        intellectualLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            showModal(intellectualModal);
+        });
+        
+        // When the user clicks on (x), close the modal
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const modal = this.closest('.modal');
+                hideModal(modal);
+            });
+        });
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                hideModal(event.target);
+            }
+        }); 
+
+
+
     //year updt
 
 document.addEventListener('DOMContentLoaded', function () {
