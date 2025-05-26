@@ -343,19 +343,22 @@ function removeFromCart(index) {
 function openLoginModal() {
     document.getElementById('loginForm').style.display = 'block';
     document.getElementById('registerForm').style.display = 'none';
-    loginModal.style.display = 'block';
+    document.getElementById('forgotPasswordForm').style.display = 'none';
+    document.getElementById('loginModal').style.display = 'block';
 }
 
 // Show register form
 function showRegisterForm() {
     document.getElementById('loginForm').style.display = 'none';
     document.getElementById('registerForm').style.display = 'block';
+    document.getElementById('forgotPasswordForm').style.display = 'none';
 }
 
 // Show login form
 function showLoginForm() {
     document.getElementById('loginForm').style.display = 'block';
     document.getElementById('registerForm').style.display = 'none';
+    document.getElementById('forgotPasswordForm').style.display = 'none';
 }
 
 // Login function
@@ -363,15 +366,13 @@ function login() {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
     
-    // Simple validation
     if (!email || !password) {
         alert('Please enter both email and password');
         return;
     }
     
-    // In a real app, you would send this to your server
     alert('Login successful!');
-    loginModal.style.display = 'none';
+    document.getElementById('loginModal').style.display = 'none';
 }
 
 // Register function
@@ -381,7 +382,6 @@ function register() {
     const password = document.getElementById('registerPassword').value;
     const confirmPassword = document.getElementById('registerConfirmPassword').value;
     
-    // Simple validation
     if (!name || !email || !password || !confirmPassword) {
         alert('Please fill in all fields');
         return;
@@ -392,11 +392,86 @@ function register() {
         return;
     }
     
-    // In a real app, you would send this to your server
     alert('Registration successful! You can now login.');
     showLoginForm();
 }
 
+let tempVerificationCode = null;
+let tempEmail = null;
+
+// Show forgot password form
+function showForgotPasswordForm() {
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('registerForm').style.display = 'none';
+    document.getElementById('forgotPasswordForm').style.display = 'block';
+}
+
+// Close verification modal
+function closeVerificationModal() {
+    document.getElementById('verificationModal').style.display = 'none';
+}
+
+// Send verification code
+function sendVerificationCode() {
+    const email = document.getElementById('forgotEmail').value;
+    
+    if (!email) {
+        alert('Please enter your email address');
+        return;
+    }
+    
+    tempEmail = email;
+    tempVerificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+    
+    alert(`Verification code sent to ${email}. For demo purposes, your code is: ${tempVerificationCode}`);
+    
+    // Close login modal and open verification modal
+    document.getElementById('loginModal').style.display = 'none';
+    document.getElementById('verificationModal').style.display = 'block';
+}
+
+// Resend verification code
+function resendVerificationCode() {
+    if (!tempEmail) {
+        alert('No email address found');
+        return;
+    }
+    
+    tempVerificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+    alert(`New verification code sent to ${tempEmail}. For demo purposes, your code is: ${tempVerificationCode}`);
+}
+
+// Verify code and reset password
+function verifyCodeAndResetPassword() {
+    const code = document.getElementById('verificationCode').value;
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+    
+    if (!code || !newPassword || !confirmNewPassword) {
+        alert('Please fill in all fields');
+        return;
+    }
+    
+    if (newPassword !== confirmNewPassword) {
+        alert('Passwords do not match');
+        return;
+    }
+    
+    if (code !== tempVerificationCode) {
+        alert('Invalid verification code');
+        return;
+    }
+    
+    alert('Password reset successfully! You can now login with your new password.');
+    
+    // Reset temporary data
+    tempVerificationCode = null;
+    tempEmail = null;
+    
+    // Close verification modal and open login modal
+    document.getElementById('verificationModal').style.display = 'none';
+    openLoginModal();
+}
 
 
 //year updt

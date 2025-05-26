@@ -354,7 +354,18 @@
         }
 
 
+       .forgot-password {
+    text-align: center;
+    margin-top: 10px;
+    color: #000000;
+}
 
+.verification-message {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
         
         
         /* Cart Modal */

@@ -63,10 +63,6 @@
 
 
 
-
-
-
-
      //chatbox
  document.getElementById('whatsapp-button').addEventListener('click', function () {
         const phone = '256785230670'; 
@@ -84,14 +80,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const currentYear = new Date().getFullYear();
     yearSpan.textContent = currentYear;
   });
-
-
-
-
-
-
-
-
 
 
 
