@@ -777,7 +777,7 @@
     justify-content: center; 
     gap: 40px; 
     text-align: center;
-    flex-wrap: wrap; /* Added for responsiveness */
+    flex-wrap: wrap; 
 }
 
 .terms a {
@@ -785,8 +785,8 @@
     text-decoration: none;
     color: var(--dark);
     font-weight: bold;
-    white-space: nowrap; /* Prevent text wrapping */
-    padding: 0 5px; /* Added small padding for better touch targets */
+    white-space: nowrap; 
+    padding: 0 5px; 
 }
 
 .terms a:hover{
@@ -837,15 +837,15 @@
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
-    font-size: 1.75rem;
-    font-weight: 300;
+    font-size: 2rem;
+    font-weight: 400;
     color: var(--gray-color);
     cursor: pointer;
     transition: all 0.3s ease;
     background: none;
     border: none;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.7rem;
+    height: 2.7rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -880,7 +880,7 @@
 .document-header h1 {
     color: var(--primary-color);
     margin-bottom: 0.5rem;
-    font-size: clamp(1.5rem, 4vw, 2rem); /* Responsive font size */
+    font-size: clamp(1.5rem, 4vw, 2rem); 
     font-weight: 700;
     letter-spacing: -0.5px;
 }
@@ -889,26 +889,26 @@
     color: var(--gray-color);
     font-style: italic;
     font-weight: 300;
-    font-size: clamp(0.9rem, 2vw, 1.1rem); /* Responsive font size */
+    font-size: clamp(0.9rem, 2vw, 1.1rem); 
 }
 
 .document-header h2 {
     color: var(--dark-color);
     margin-top: 1rem;
-    font-size: clamp(1.2rem, 3vw, 1.5rem); /* Responsive font size */
+    font-size: clamp(1.2rem, 3vw, 1.5rem); 
     font-weight: 600;
 }
 
 .document-content {
     line-height: 1.7;
-    font-size: clamp(0.9rem, 2vw, 1rem); /* Responsive font size */
+    font-size: clamp(0.9rem, 2vw, 1rem); 
     color: var(--dark-color);
 }
 
 .document-content h2 {
     color: var(--primary-color);
     margin: 2rem 0 1rem;
-    font-size: clamp(1.1rem, 3vw, 1.4rem); /* Responsive font size */
+    font-size: clamp(1.1rem, 3vw, 1.4rem); 
     font-weight: 600;
     position: relative;
     padding-bottom: 0.5rem;
@@ -927,7 +927,7 @@
 .document-content h3 {
     color: var(--dark-color);
     margin: 1.5rem 0 0.75rem;
-    font-size: clamp(1rem, 2.5vw, 1.2rem); /* Responsive font size */
+    font-size: clamp(1rem, 2.5vw, 1.2rem); 
     font-weight: 500;
 }
 
@@ -970,7 +970,7 @@
     margin-top: 3rem;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; /* Added for responsiveness */
+    flex-wrap: wrap; 
     gap: 1rem;
 }
 
@@ -990,16 +990,16 @@
     .modal-content {
         padding: 1.5rem;
         width: 95%;
-        margin: 5% auto; /* Slightly increased for better mobile spacing */
+        margin: 5% auto; 
     }
     
     .terms {
-        gap: 20px; /* Reduced gap for smaller screens */
-        padding: 0 10px; /* Added padding to prevent touching screen edges */
+        gap: 20px; 
+        padding: 0 10px; 
     }
     
     .terms a {
-        font-size: 12px; /* Slightly smaller font */
+        font-size: 12px; 
     }
     
     .highlight {
@@ -1007,23 +1007,23 @@
     }
     
     .signature-line {
-        width: 100%; /* Full width on mobile */
+        width: 100%; 
     }
 }
 
 @media (max-width: 480px) {
     .modal-content {
         padding: 1rem;
-        margin: 10% auto; /* More margin for very small screens */
-        border-radius: 0.5rem; /* Slightly smaller radius */
+        margin: 10% auto; 
+        border-radius: 0.5rem; 
     }
     
     .terms {
-        gap: 10px; /* Even smaller gap for tiny screens */
+        gap: 10px; 
     }
     
     .terms a {
-        font-size: 11px; /* Minimum readable size */
+        font-size: 11px; 
     }
     
     .close-btn {
@@ -1035,11 +1035,11 @@
     }
     
     .signature-section {
-        flex-direction: column; /* Stack signature boxes vertically */
+        flex-direction: column; 
     }
     
     .signature-box {
-        min-width: 100%; /* Full width on very small screens */
+        min-width: 100%; 
     }
 }
 
