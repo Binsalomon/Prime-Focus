@@ -11,77 +11,127 @@
             color: #333;
         }
         
-        /* Navbar Styles */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 5%;
-            background-color: #020261;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .brand {
-            font-size: 30px;
-            font-weight: bold;
-            color: #ecf0f1;
-            text-decoration: none;
-        }
-        
-        .search-container {
-            display: flex;
-            width: 40%;
-        }
-        
-        .search-bar {
-            width: 85%;
-            padding: 10px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            outline: none;
-        }
-        
-        .search-button {
-            width: 15%;
-            padding: 10px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-        }
-        
-        .nav-icons {
-            display: flex;
-            gap: 25px;
-        }
-        
-        .nav-icon {
-            color: white;
-            font-size: 25px;
-            cursor: pointer;
-            position: relative;
-        }
-        
-        .cart-count {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background-color: #e74c3c;
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 12px;
-        }
-        
+       /* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: #020261;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
+.brand {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ecf0f1;
+    text-decoration: none;
+}
+
+.search-container {
+    display: flex;
+    width: 40%;
+}
+
+.search-bar {
+    width: 85%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+.search-button {
+    width: 15%;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.nav-icons {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-icon {
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .search-container {
+        width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        padding: 15px 3%;
+    }
+    
+    .brand {
+        order: 1;
+        font-size: 24px;
+    }
+    
+    .search-container {
+        order: 3;
+        width: 100%;
+        margin-top: 15px;
+    }
+    
+    .nav-icons {
+        order: 2;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 2%;
+    }
+    
+    .brand {
+        font-size: 20px;
+    }
+    
+    .nav-icon {
+        font-size: 20px;
+    }
+    
+    .cart-count {
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+        top: -8px;
+        right: -8px;
+    }
+}
 
 
         /* Advertisement Section */

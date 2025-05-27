@@ -299,9 +299,10 @@ body {
     border-color: var(--secondary);
 }
 
+
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
     gap: 30px;
 }
 
@@ -358,12 +359,13 @@ body {
 }
 
 .overlay h3 {
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
     margin-bottom: 10px;
 }
 
 .overlay p {
     margin-bottom: 20px;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
 }
 
 .view-btn {
@@ -373,6 +375,7 @@ body {
     display: flex;
     align-items: center;
     transition: all 0.3s;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
 }
 
 .view-btn i {
@@ -389,7 +392,7 @@ body {
 }
 
 .portfolio-info h3 {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
     margin-bottom: 5px;
     color: var(--primary);
 }
@@ -399,17 +402,48 @@ body {
     font-weight: 500;
     display: block;
     margin-bottom: 10px;
+    font-size: clamp(0.8rem, 1.2vw, 0.9rem);
 }
 
 .results {
     display: flex;
     align-items: center;
     color: var(--gray);
+    font-size: clamp(0.8rem, 1.2vw, 0.9rem);
 }
 
 .results i {
     margin-right: 5px;
     color: var(--accent);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .portfolio-grid {
+        gap: 20px;
+    }
+    
+    .portfolio-img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-grid {
+        gap: 15px;
+    }
+    
+    .portfolio-img {
+        height: 180px;
+    }
+    
+    .portfolio-info {
+        padding: 15px;
+    }
+    
+    .overlay {
+        padding: 15px;
+    }
 }
 
 /* Testimonials */
