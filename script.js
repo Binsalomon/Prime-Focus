@@ -220,20 +220,34 @@ setInterval(nextSlide, 3000);
             showModal(intellectualModal);
         });
         
-        // When the user clicks on (x), close the modal
-        closeButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const modal = this.closest('.modal');
-                hideModal(modal);
-            });
-        });
-        
-        // When the user clicks anywhere outside of the modal, close it
-        window.addEventListener('click', function(event) {
-            if (event.target.classList.contains('modal')) {
-                hideModal(event.target);
-            }
-        }); 
+
+
+closeButtons.forEach(button => {
+    // Add both click and touch events for mobile compatibility
+    button.addEventListener('click', closeModalHandler);
+    button.addEventListener('touchend', closeModalHandler);
+});
+
+function closeModalHandler(e) {
+    e.preventDefault();
+    e.stopPropagation(); // Prevent event bubbling
+    const modal = this.closest('.modal');
+    if (modal) {
+        hideModal(modal);
+    }
+}
+
+// Also update the window click handler for mobile
+window.addEventListener('click', function(event) {
+    if (event.target.classList.contains('modal')) {
+        hideModal(event.target);
+    }
+});
+window.addEventListener('touchend', function(event) {
+    if (event.target.classList.contains('modal')) {
+        hideModal(event.target);
+    }
+});
 
 
 

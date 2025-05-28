@@ -966,25 +966,7 @@
     margin: 1.5rem 0;
 }
 
-.signature-section {
-    margin-top: 3rem;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; 
-    gap: 1rem;
-}
 
-.signature-box {
-    flex: 1;
-    min-width: 250px;
-}
-
-.signature-line {
-    border-top: 1px solid var(--gray-color);
-    margin-top: 3rem;
-    padding-top: 0.5rem;
-    width: 80%;
-}
 
 @media (max-width: 768px) {
     .modal-content {
@@ -1002,13 +984,6 @@
         font-size: 12px; 
     }
     
-    .highlight {
-        padding: 1rem;
-    }
-    
-    .signature-line {
-        width: 100%; 
-    }
 }
 
 @media (max-width: 480px) {
@@ -1027,21 +1002,20 @@
     }
     
     .close-btn {
-        top: 1rem;
-        right: 1rem;
-        width: 2rem;
-        height: 2rem;
-        font-size: 1.5rem;
+        top: 0.8rem;
+        right: 0.8rem;
+        width: 2.5rem;  
+        height: 2.5rem; 
+        font-size: 1.7rem;
+        padding: 0;
+        touch-action: manipulation;
     }
     
-    .signature-section {
-        flex-direction: column; 
-    }
-    
-    .signature-box {
-        min-width: 100%; 
+    .close-btn {
+        z-index: 1001;
     }
 }
+    
 
 
 
