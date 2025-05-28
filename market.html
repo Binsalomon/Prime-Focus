@@ -151,20 +151,143 @@
     </div>
 </div>
     
-    <!-- Cart Modal -->
-    <div class="modal" id="cartModal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Your Cart</h2>
-            <div class="cart-items" id="cartItemsContainer">
-                <!-- Cart items will be dynamically added here -->
-            </div>
-            <div class="cart-summary">
-                <div class="total-amount">Total: UGX <span id="cartTotal">0.00</span></div>
-                <a href="payment.html"><button class="checkout-button">Proceed to Checkout</button></a>
+<!-- Cart Modal -->
+<div class="modal" id="cartModal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Your Cart</h2>
+        <div class="cart-items" id="cartItemsContainer">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-summary">
+            <div class="total-amount">Total: UGX <span id="cartTotal">0.00</span></div>
+            <div class="cart-buttons">
+                <button class="continue-shopping-button" onclick="continueShopping()">Continue Shopping</button>
+                <button class="checkout-button" onclick="openPaymentModal()">Proceed to Checkout</button>
             </div>
         </div>
     </div>
+</div>
+
+
+
+
+<!-- Payment Method Modal -->
+<div class="modal" id="paymentModal">
+    <div class="modal-content payment-modal-content">
+        <span class="close-button" onclick="closePaymentModal()">&times;</span>
+        <h2 class="payment-title">Select Payment Method</h2>
+        
+        <div class="payment-methods-grid">
+            <!-- MTN Mobile Money -->
+            <div class="payment-card" onclick="selectPaymentMethod('mtn')">
+                <div class="payment-logo-container">
+                    <img src="images/mtn.jpg" alt="MTN Mobile Money" class="payment-logo">
+                </div>
+                <div class="payment-details">
+                    <h3>MTN Mobile Money</h3>
+                    <p>Pay instantly via mobile money</p>
+                </div>
+                <div class="payment-select">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            
+            <!-- Bank Card -->
+            <div class="payment-card" onclick="selectPaymentMethod('card')">
+                <div class="payment-logo-container">
+                    <img src="images/bank.jpg" alt="Bank Card" class="payment-logo">
+                </div>
+                <div class="payment-details">
+                    <h3>Bank Card</h3>
+                    <p>Visa, Mastercard, etc.</p>
+                </div>
+                <div class="payment-select">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            
+            <!-- PayPal -->
+            <div class="payment-card" onclick="selectPaymentMethod('paypal')">
+                <div class="payment-logo-container">
+                    <img src="images/pp.jpg" alt="PayPal" class="payment-logo">
+                </div>
+                <div class="payment-details">
+                    <h3>PayPal</h3>
+                    <p>International payments</p>
+                </div>
+                <div class="payment-select">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            
+            <!-- Crypto -->
+            <div class="payment-card" onclick="selectPaymentMethod('crypto')">
+                <div class="payment-logo-container">
+                    <img src="images/bt.jpg" alt="Crypto" class="payment-logo">
+                </div>
+                <div class="payment-details">
+                    <h3>Crypto</h3>
+                    <p>Bitcoin, Ethereum, etc.</p>
+                </div>
+                <div class="payment-select">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MTN Payment Form -->
+        <div class="payment-form-container" id="mtnPaymentForm">
+            <div class="payment-form-header">
+                <button class="back-button" onclick="backToPaymentMethods()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h3>MTN Mobile Money Payment</h3>
+            </div>
+            
+            <div class="payment-form-body">
+                <div class="payment-amount-display">
+                    <span>Total Amount:</span>
+                    <span class="amount">UGX <span id="mtnTotalAmount">0</span></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mtnPhoneNumber">Mobile Number</label>
+                    <div class="input-with-prefix">
+                        <span class="prefix">+256</span>
+                        <input type="tel" id="mtnPhoneNumber" placeholder="XXXXXXXXX" pattern="[0-9]{9}" maxlength="9">
+                    </div>
+                    <small class="input-hint">Enter your 9-digit MTN number</small>
+                </div>
+                
+                <button class="payment-submit-button" onclick="processMtnPayment()">
+                    <i class="fas fa-lock"></i> Confirm Payment
+                </button>
+            </div>
+        </div>
+        
+        <!-- Other Payment Message -->
+        <div class="other-payment-message" id="otherPaymentMessage">
+            <div class="message-header">
+                <button class="back-button" onclick="backToPaymentMethods()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h3>Payment Option</h3>
+            </div>
+            
+            <div class="message-body">
+                <div class="icon-container">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <p>This payment option is not yet approved in your country.</p>
+                <p>Please select MTN Mobile Money for payments in Uganda.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 
 

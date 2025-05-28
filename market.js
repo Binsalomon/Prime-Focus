@@ -156,6 +156,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
+function formatPrice(price) {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+
 // Display products
 function displayProducts(productsToDisplay) {
     productsContainer.innerHTML = '';
@@ -168,7 +174,7 @@ function displayProducts(productsToDisplay) {
             <div class="product-info">
                 <h3 class="product-name">${product.name}</h3>
                 <p class="product-description">${product.description}</p>
-                <div class="product-price">UGX ${product.price.toFixed()}</div>
+                <div class="product-price">UGX ${formatPrice(product.price)}</div>
                 <button class="add-to-cart" onclick="addToCart(${product.id})">Add to Cart</button>
             </div>
         `;
@@ -199,7 +205,7 @@ function openProductModal(productId) {
     
     document.getElementById('mainProductImage').src = product.images[0];
     document.getElementById('detailName').textContent = product.name;
-    document.getElementById('detailPrice').textContent = `UGX ${product.price.toFixed()}`;
+    document.getElementById('detailPrice').textContent = `UGX ${formatPrice(product.price)}`;
     document.getElementById('detailDescription').textContent = product.description;
     document.getElementById('longDescription').textContent = product.longDescription;
     
@@ -273,6 +279,17 @@ function showNotification(message) {
 }
 
 
+// Continue shopping function
+function continueShopping() {
+    // Close the cart modal
+    cartModal.style.display = 'none';
+    
+    // Scroll to the products section for better UX
+    document.querySelector('.products-section').scrollIntoView({
+        behavior: 'smooth'
+    });
+}
+
 
 
 // Update cart count
@@ -289,30 +306,29 @@ function openCartModal() {
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = '<p>Your cart is empty</p>';
         document.getElementById('cartTotal').textContent = '0.00';
-        cartModal.style.display = 'block';
-        return;
+    } else {
+        let total = 0;
+        
+        cart.forEach((item, index) => {
+            const cartItem = document.createElement('div');
+            cartItem.className = 'cart-item';
+            cartItem.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                <div class="cart-item-details">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-price">UGX ${formatPrice(item.price * item.quantity)} (${item.quantity} x UGX ${formatPrice(item.price)})</div>
+                </div>
+                <div class="cart-item-actions">
+                    <button class="remove-item" onclick="removeFromCart(${index})">Remove</button>
+                </div>
+            `;
+            cartItemsContainer.appendChild(cartItem);
+            total += item.price * item.quantity;
+        });
+        
+        document.getElementById('cartTotal').textContent = formatPrice(total);
     }
     
-    let total = 0;
-    
-    cart.forEach((item, index) => {
-        const cartItem = document.createElement('div');
-        cartItem.className = 'cart-item';
-        cartItem.innerHTML = `
-            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-            <div class="cart-item-details">
-                <div class="cart-item-name">${item.name}</div>
-                <div class="cart-item-price">UGX ${(item.price * item.quantity).toFixed()} (${item.quantity} x UGX ${item.price.toFixed(3)})</div>
-            </div>
-            <div class="cart-item-actions">
-                <button class="remove-item" onclick="removeFromCart(${index})">Remove</button>
-            </div>
-        `;
-        cartItemsContainer.appendChild(cartItem);
-        total += item.price * item.quantity;
-    });
-    
-    document.getElementById('cartTotal').textContent = total.toFixed();
     cartModal.style.display = 'block';
 }
 
@@ -331,9 +347,82 @@ function removeFromCart(index) {
         openCartModal();
         showNotification(`${removedItem.name} has been removed from your cart`);
     }
-    // If user cancels, do nothing
 }
 
+
+
+function openPaymentModal() {
+    // Check if cart is empty
+    if (cart.length === 0) {
+        showNotification('Your cart is empty. Add some items first!');
+        return;
+    }
+    
+}
+
+function openPaymentModal() {
+
+    // Update the total amount display
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    document.getElementById('mtnTotalAmount').textContent = formatPrice(total);
+    
+    // Show payment modal
+    const paymentModal = document.getElementById('paymentModal');
+    paymentModal.style.display = 'block';
+    
+    // Reset to methods view
+    document.getElementById('payment-methods-grid').style.display = 'grid';
+    document.getElementById('mtnPaymentForm').style.display = 'none';
+    document.getElementById('otherPaymentMessage').style.display = 'none';
+    
+    // Smooth scroll to top of modal
+    setTimeout(() => {
+        paymentModal.querySelector('.modal-content').scrollTop = 0;
+    }, 10);
+}
+
+function selectPaymentMethod(method) {
+    // Hide methods grid
+    document.querySelector('.payment-methods-grid').style.display = 'none';
+    
+    if (method === 'mtn') {
+        // Show MTN payment form
+        document.getElementById('mtnPaymentForm').style.display = 'block';
+    } else {
+        // Show message for other payment methods
+        document.getElementById('otherPaymentMessage').style.display = 'block';
+    }
+}
+
+function backToPaymentMethods() {
+    // Show payment methods again
+    document.querySelector('.payment-methods-grid').style.display = 'grid';
+    document.getElementById('mtnPaymentForm').style.display = 'none';
+    document.getElementById('otherPaymentMessage').style.display = 'none';
+    
+    // Smooth scroll to top
+    document.getElementById('paymentModal').querySelector('.modal-content').scrollTop = 0;
+}
+
+function processMtnPayment() {
+    const phoneNumber = '+256' + document.getElementById('mtnPhoneNumber').value;
+    const phoneRegex = /^\+256[0-9]{9}$/;
+    
+    if (!phoneRegex.test(phoneNumber)) {
+        showNotification('Please enter a valid 9-digit MTN number (without +256)');
+        return;
+    }
+    
+    // Process payment (simulated)
+    showNotification(`Payment request sent to ${phoneNumber}. Please complete on your mobile device.`);
+    
+    // Close payment modal
+    closePaymentModal();
+    
+    // Clear cart after successful payment
+    cart = [];
+    updateCartCount();
+}
 
 
 
